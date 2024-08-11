@@ -27,4 +27,4 @@ Links<br>
 • https://www.framer.com/motion/ <br>
 
 
-<img src="https://github.com/ruchiralkm/Simple-Dictionary/blob/main/dictionary.png">
+<img src="https://github.com/ruchiralkm/movieapp/blob/main/Preview.png">
