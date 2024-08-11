@@ -28,7 +28,7 @@ const NavBar = () => {
       <div onClick={refreshPage} style={{ cursor: "pointer" }} className="logo">
         <span style={{ color: "#03c03c" }}>E</span>
         <span>
-          Movie<span style={{ color: "red" }}>s</span>
+          Movie<span style={{ color: "#03c03c" }}>s</span>
         </span>
       </div>
       <input type="checkbox" id="menu-toggle" />
