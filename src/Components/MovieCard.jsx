@@ -1,11 +1,12 @@
+//import { motion } from "framer-motion";
 import React from "react";
 
 function MovieCard({ movie: { imdbID, Year, Poster, Title, Type } }) {
   return (
     <>
-      <div className="movie" key={imdbID}>
+      <div className="movie" style={{ cursor: "pointer" }} key={imdbID}>
         <div>
-          <p>{Year}</p>
+          <h3>{Year}</h3>
         </div>
         <div>
           <img

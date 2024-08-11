@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 import "../App.scss";
 import SearchIcon from "../assets/search.svg";
 import MovieCard from "./MovieCard";
+import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
 
 const API_URL = "http://www.omdbapi.com/?apikey=fd416966";
 
 function Home() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const notify = () => toast.success(`You searched "${searchTerm}"`);
 
   const searchMovie = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
@@ -20,17 +24,25 @@ function Home() {
     searchMovie("jurassic");
   }, []);
 
-  //------------ Refresh webpage ------------
-  const refreshPage = () => {
-    window.location.reload();
-  };
   return (
     <>
       <div className="app">
-        <h1 onClick={refreshPage} style={{ cursor: "pointer" }}>
-          MovieSpace
-        </h1>
-        <div className="search">
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: -100,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            delay: 1.2,
+            duration: 1.2,
+            type: "spring",
+          }}
+          className="search"
+        >
           <input
             type="text"
             name=""
@@ -42,9 +54,13 @@ function Home() {
           <img
             src={SearchIcon}
             alt=""
-            onClick={() => searchMovie(searchTerm)}
+            onClick={() => {
+              searchMovie(searchTerm);
+              notify();
+            }}
           />
-        </div>
+          <Toaster />
+        </motion.div>
 
         {movies?.length > 0 ? (
           <div className="container">
@@ -58,6 +74,7 @@ function Home() {
           </div>
         )}
       </div>
+      <div className="gradient"></div>
     </>
   );
 }
